@@ -32,20 +32,20 @@ function App() {
       {/* Cards */}
       <section className="cards">
         <div className="card">
-      <FaMapMarkedAlt className="card-icon" /> 
-        <h3>Seguimiento</h3>
-        <p>Sigue el estado de tu pedido en tiempo real, fácil y rápido.</p>
-      </div>
+          <FaUsers className="card-icon" />
+          <h3>Atención al Cliente</h3>
+          <p>Asistencia personalizada para resolver tus necesidades.</p>
+        </div>
         <div className="card">
       <FaMotorcycle className="card-icon" />
           <h3>Delivery</h3>
           <p>Servicio de entrega rápida y segura hasta tu puerta.</p>
         </div>
         <div className="card">
-          <FaUsers className="card-icon" />
-          <h3>Atención al Cliente</h3>
-          <p>Asistencia personalizada para resolver tus necesidades.</p>
-        </div>
+      <FaMapMarkedAlt className="card-icon" /> 
+        <h3>Seguimiento</h3>
+        <p>Sigue el estado de tu pedido en tiempo real, fácil y rápido.</p>
+      </div>
       </section>
 
       {/* Botón solicitar */}
