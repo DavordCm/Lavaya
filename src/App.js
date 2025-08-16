@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
-import { FaMapMarkedAlt, FaMotorcycle, FaUsers, FaWhatsapp } from "react-icons/fa";
+import { FaMapMarkedAlt, FaMotorcycle, FaUsers, FaWhatsapp, FaRobot, FaTimes } from "react-icons/fa";
+import Chatbot from "./components/chatbot";
 
 function App() {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+
+  const toggleChat = () => {
+    setIsChatOpen(!isChatOpen);
+  };
+
   return (
     <div className="App">
       {/* Navbar */}
@@ -24,7 +31,8 @@ function App() {
       {/* Hero */}
       <header className="hero">
         <h1>Bienvenido a LavaYa</h1>
-        <p>Tu servicio express de confianza, Ofrecemos los mejores servicios para ti,<br />
+        <p>
+          Tu servicio express de confianza, Ofrecemos los mejores servicios para ti,<br />
           rápida y segura
         </p>
       </header>
@@ -37,15 +45,15 @@ function App() {
           <p>Asistencia personalizada para resolver tus necesidades.</p>
         </div>
         <div className="card">
-      <FaMotorcycle className="card-icon" />
+          <FaMotorcycle className="card-icon" />
           <h3>Delivery</h3>
           <p>Servicio de entrega rápida y segura hasta tu puerta.</p>
         </div>
         <div className="card">
-      <FaMapMarkedAlt className="card-icon" /> 
-        <h3>Seguimiento</h3>
-        <p>Sigue el estado de tu pedido en tiempo real, fácil y rápido.</p>
-      </div>
+          <FaMapMarkedAlt className="card-icon" />
+          <h3>Seguimiento</h3>
+          <p>Sigue el estado de tu pedido en tiempo real, fácil y rápido.</p>
+        </div>
       </section>
 
       {/* Botón solicitar */}
@@ -57,7 +65,7 @@ function App() {
       <footer className="footer">
         <p>© 2025 Nuestra Empresa</p>
         <a
-          href="https://wa.me/51999999999"
+          href="https://wa.me/51923515757"
           target="_blank"
           rel="noopener noreferrer"
           className="whatsapp-icon"
@@ -65,6 +73,18 @@ function App() {
           <FaWhatsapp />
         </a>
       </footer>
+
+      {/* Bot flotante */}
+      <div className="chatbot-button" onClick={toggleChat}>
+        {isChatOpen ? <FaTimes /> : <FaRobot />}
+      </div>
+
+      {/* Ventana de Chatbot */}
+      {isChatOpen && (
+        <div className="chatbot-window">
+          <Chatbot /> {/* 👈 aquí llamamos al bot */}
+        </div>
+      )}
     </div>
   );
 }
