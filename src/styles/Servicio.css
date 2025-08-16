@@ -1,0 +1,93 @@
+.servicios-container {
+  text-align: center;
+  padding: 30px;
+  background: linear-gradient(135deg, #f5f9ff, #e9f2ff);
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Tabs */
+.tabs {
+  margin-bottom: 30px;
+}
+
+.tabs button {
+  background: white;
+  border: none;
+  padding: 12px 25px;
+  margin: 5px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #333;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.05);
+}
+
+.tabs button:hover {
+  background: #007bff;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 12px rgba(0,0,0,0.1);
+}
+
+.tabs .active {
+  background: #007bff;
+  color: white;
+  box-shadow: 0px 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Card */
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0px 6px 20px rgba(0,0,0,0.08);
+  max-width: 700px;
+  margin: auto;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.card h2 {
+  margin-bottom: 20px;
+  color: #222;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+.card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.card table, 
+.card th, 
+.card td {
+  border: 1px solid #e0e0e0;
+}
+
+.card th, 
+.card td {
+  padding: 12px;
+  text-align: center;
+}
+
+.card th {
+  background: #f8faff;
+  font-weight: bold;
+  color: #444;
+}
+
+.card tr:hover {
+  background: #f1f7ff;
+  transition: background 0.3s ease;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,80 @@
+.solicitar-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.solicitar-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: bold;
+  text-align: left;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.ubicacion-container {
+  display: flex;
+  gap: 5px;
+}
+
+.ubicacion-container input {
+  flex: 1;
+}
+
+.ubicacion-container button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.ubicacion-container button:hover {
+  background: #0056b3;
+}
+
+.btn-submit {
+  background: green;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background: darkgreen;
+}
+
+/* Paso 2 */
+.servicios-botones {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.servicios-botones button {
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  background: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.servicios-botones button:hover {
+  background: #0056b3;
+}
