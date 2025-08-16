@@ -1,8 +1,11 @@
 .solicitar-container {
   max-width: 500px;
-  margin: auto;
+  margin: 40px auto;
   padding: 20px;
   text-align: center;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .solicitar-form {
@@ -16,10 +19,14 @@ label {
   text-align: left;
 }
 
-input {
+input[type="text"],
+input[type="tel"],
+input[type="number"] {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .ubicacion-container {
@@ -35,9 +42,10 @@ input {
   background: #007bff;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 10px 15px;
   border-radius: 6px;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
 .ubicacion-container button:hover {
@@ -51,30 +59,65 @@ input {
   padding: 12px;
   border-radius: 6px;
   cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: background 0.3s;
 }
 
 .btn-submit:hover {
   background: darkgreen;
 }
 
-/* Paso 2 */
-.servicios-botones {
+/* Paso 2: Cantidades de prendas */
+.cantidad-prendas {
   display: flex;
   flex-direction: column;
   gap: 15px;
   margin-top: 20px;
 }
 
-.servicios-botones button {
-  padding: 15px;
-  border: none;
-  border-radius: 8px;
-  background: #007bff;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
+.cantidad-prendas label {
+  text-align: left;
 }
 
-.servicios-botones button:hover {
-  background: #0056b3;
+.cantidad-prendas input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Resultado */
+.resultado {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e0ffe0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.resultado h2 {
+  margin-bottom: 10px;
+  color: #2e7d32;
+}
+
+.resultado p {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+/* Botones de reiniciar y continuar */
+.resultado .btn-submit {
+  margin: 10px 5px 0 5px;
+  width: 45%;
+}
+
+@media (max-width: 500px) {
+  .ubicacion-container {
+    flex-direction: column;
+  }
+
+  .ubicacion-container button,
+  .resultado .btn-submit {
+    width: 100%;
+  }
 }

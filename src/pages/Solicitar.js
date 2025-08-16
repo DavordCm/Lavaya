@@ -7,8 +7,17 @@ function Solicitar() {
   const [telefono, setTelefono] = useState("");
   const [dni, setDni] = useState("");
   const [paso, setPaso] = useState(1);
-  const [servicioSeleccionado, setServicioSeleccionado] = useState("");
+
+  // Cantidad de prendas
+  const [camisas, setCamisas] = useState(0);
+  const [pantalones, setPantalones] = useState(0);
+  const [vestidos, setVestidos] = useState(0);
+
+  const [resultado, setResultado] = useState(null);
   const navigate = useNavigate();
+
+  const pesos = { camisa: 0.3, pantalon: 0.5, vestido: 0.6 };
+  const precioPorKilo = 12; // Precio S/ por kilo
 
   const obtenerUbicacion = () => {
     if (navigator.geolocation) {
@@ -35,13 +44,31 @@ function Solicitar() {
     setPaso(2);
   };
 
-  const handleContinuarServicio = () => {
-    if (servicioSeleccionado) {
-      // En vez de ir a otra página de servicio, mandamos directo a Confirmación
-      navigate("/confirmacion", {
-        state: { ubicacion, telefono, dni, servicio: servicioSeleccionado }
-      });
-    }
+  const calcularPrecio = () => {
+    const totalKilos =
+      camisas * pesos.camisa +
+      pantalones * pesos.pantalon +
+      vestidos * pesos.vestido;
+
+    const totalPrecio = totalKilos * precioPorKilo;
+
+    setResultado({ totalKilos, totalPrecio });
+  };
+
+  const continuar = () => {
+    if (!resultado) return;
+    navigate("/confirmacion", {
+      state: {
+        ubicacion,
+        telefono,
+        dni,
+        camisas,
+        pantalones,
+        vestidos,
+        totalKilos: resultado.totalKilos,
+        totalPrecio: resultado.totalPrecio
+      }
+    });
   };
 
   return (
@@ -92,46 +119,47 @@ function Solicitar() {
 
       {paso === 2 && (
         <>
-          <h1>Elige tu servicio</h1>
-          <div className="servicios-botones">
-            <label>
-              <input
-                type="radio"
-                name="servicio"
-                value="premium"
-                onChange={(e) => setServicioSeleccionado(e.target.value)}
-              />
-              ⭐ Servicio Premium
-            </label>
+          <h1>Ingresa la cantidad de prendas</h1>
+          <div className="cantidad-prendas">
+            <label>Camisas</label>
+            <input
+              type="number"
+              min="0"
+              value={camisas}
+              onChange={(e) => setCamisas(parseInt(e.target.value))}
+            />
 
-            <label>
-              <input
-                type="radio"
-                name="servicio"
-                value="descuento"
-                onChange={(e) => setServicioSeleccionado(e.target.value)}
-              />
-              💰 Descuento por Volumen
-            </label>
+            <label>Pantalones</label>
+            <input
+              type="number"
+              min="0"
+              value={pantalones}
+              onChange={(e) => setPantalones(parseInt(e.target.value))}
+            />
 
-            <label>
-              <input
-                type="radio"
-                name="servicio"
-                value="paquete"
-                onChange={(e) => setServicioSeleccionado(e.target.value)}
-              />
-              📦 Precio por Paquete
-            </label>
+            <label>Vestidos</label>
+            <input
+              type="number"
+              min="0"
+              value={vestidos}
+              onChange={(e) => setVestidos(parseInt(e.target.value))}
+            />
+
+            <p>Precio por kilo: S/ {precioPorKilo}</p>
+
+            <button className="btn-submit" onClick={calcularPrecio}>
+              Calcular Precio
+            </button>
+
+            {resultado && (
+              <div className="resultado">
+                <h2>Resultado</h2>
+                <p>Total estimado de kilos: {resultado.totalKilos.toFixed(2)} kg</p>
+                <p>Precio total: S/ {resultado.totalPrecio.toFixed(2)}</p>
+                <button className="btn-submit" onClick={continuar}>Siguiente</button>
+              </div>
+            )}
           </div>
-
-          <button
-            className="btn-submit"
-            disabled={!servicioSeleccionado}
-            onClick={handleContinuarServicio}
-          >
-            Siguiente
-          </button>
         </>
       )}
     </div>
