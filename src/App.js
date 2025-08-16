@@ -113,24 +113,11 @@ function App() {
 
         {/* Chatbot solo si está abierto */}
         {isChatOpen && (
-          <div
-            style={{
-              position: "fixed",
-              bottom: "140px",
-              right: "20px",
-              width: "300px",
-              height: "400px",
-              backgroundColor: "white",
-              border: "1px solid #ccc",
-              borderRadius: "10px",
-              overflow: "hidden",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
-              zIndex: 1000
-            }}
-          >
-            <Chatbot onClose={toggleChat} />
-          </div>
-        )}
+  <div style={{ position: "fixed", bottom: "140px", right: "20px", zIndex: 1000 }}>
+    <Chatbot onClose={toggleChat} />
+  </div>
+)}
+
       </div>
     </Router>
   );

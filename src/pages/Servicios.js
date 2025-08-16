@@ -8,21 +8,57 @@ function Servicios() {
     switch (activeTab) {
       case "precios":
         return (
-          <div className="card">
-            <h2>Precios de Lavandería por Kilo</h2>
-            <table>
-              <thead>
-                <tr>
-                  <th>Prenda</th>
-                  <th>Precio por kilo (S/)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>Camisa</td><td>15.00</td></tr>
-                <tr><td>Pantalón</td><td>18.00</td></tr>
-                <tr><td>Vestido</td><td>20.00</td></tr>
-              </tbody>
-            </table>
+          <div className="cards-row">
+            <div className="card">
+              <h2>Precios de Lavandería por Kilo</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Prenda</th>
+                    <th>Precio por kilo (S/)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Camisa</td><td>15.00</td></tr>
+                  <tr><td>Pantalón</td><td>18.00</td></tr>
+                  <tr><td>Vestido</td><td>20.00</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="card">
+              <h2>Ejemplo de Precios por Cantidad de Kilos</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Kilos</th>
+                    <th>Precio Estimado (S/)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>1 kg</td><td>15.00</td></tr>
+                  <tr><td>2 kg</td><td>30.00</td></tr>
+                  <tr><td>7 kg</td><td>105.00</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="card">
+              <h2>Servicio Motorizado</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Tipo de Servicio</th>
+                    <th>Precio (S/)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Recojo y Entrega</td><td>8.00</td></tr>
+                  <tr><td>Solo Recojo</td><td>5.00</td></tr>
+                  <tr><td>Solo Entrega</td><td>5.00</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         );
 
