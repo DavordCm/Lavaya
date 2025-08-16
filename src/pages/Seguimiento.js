@@ -1,28 +1,35 @@
 import React, { useState } from "react";
+import { FaClipboardList, FaBoxOpen, FaCheckCircle } from "react-icons/fa";
+import { GiScooter } from "react-icons/gi";
+import "../styles/Seguimiento.css";
 
 function Seguimiento() {
   const [codigoPedido, setCodigoPedido] = useState("");
-  const [estado, setEstado] = useState(null);
+  const [estadoActual, setEstadoActual] = useState(null);
 
-  // Simulación de búsqueda de estado del pedido
+  const pasos = [
+    { nombre: "Pedido recibido", icono: <FaClipboardList /> },
+    { nombre: "En preparación", icono: <FaBoxOpen /> },
+    { nombre: "En camino", icono: <GiScooter /> },
+    { nombre: "Entregado", icono: <FaCheckCircle /> },
+  ];
+
   const buscarPedido = () => {
     if (!codigoPedido.trim()) {
       alert("Por favor ingresa el código del pedido");
       return;
     }
 
-    // Simulación de datos
-    const estadosSimulados = {
-      "ABC123": "En camino",
-      "XYZ789": "Entregado",
-      "LMN456": "En preparación",
-    };
-
-    setEstado(estadosSimulados[codigoPedido.toUpperCase()] || "No encontrado");
+    // Simulación de estado aleatorio
+    const index = Math.floor(Math.random() * pasos.length);
+    setEstadoActual(index);
   };
 
+  const porcentajeCompletado =
+    estadoActual !== null ? (estadoActual / (pasos.length - 1)) * 100 : 0;
+
   return (
-    <div style={{ padding: "20px", maxWidth: "500px", margin: "auto", textAlign: "center" }}>
+    <div className="seguimiento-container">
       <h1>Seguimiento de Pedido</h1>
       <p>Ingresa tu código de pedido para conocer el estado actual.</p>
 
@@ -31,33 +38,40 @@ function Seguimiento() {
         placeholder="Código del pedido"
         value={codigoPedido}
         onChange={(e) => setCodigoPedido(e.target.value)}
-        style={{
-          padding: "10px",
-          width: "100%",
-          maxWidth: "300px",
-          marginBottom: "10px",
-          borderRadius: "5px",
-          border: "1px solid #ccc",
-        }}
+        className="seguimiento-input"
       />
       <br />
-      <button
-        onClick={buscarPedido}
-        style={{
-          padding: "10px 20px",
-          backgroundColor: "#007BFF",
-          color: "#fff",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
+      <button onClick={buscarPedido} className="seguimiento-btn">
         Buscar
       </button>
 
-      {estado && (
-        <div style={{ marginTop: "20px" }}>
-          <h3>Estado: {estado}</h3>
+      {estadoActual !== null && (
+        <div className="progreso-container">
+          {/* Línea de fondo */}
+          <div className="progreso-linea"></div>
+          {/* Barra de progreso verde */}
+          <div
+            className="progreso-linea-completado"
+            style={{ width: `${porcentajeCompletado}%` }}
+          ></div>
+
+          {/* Pasos */}
+          {pasos.map((paso, index) => {
+            let clase = "paso-pendiente";
+            if (index < estadoActual) clase = "paso-completado";
+            if (index === estadoActual && paso.nombre === "En preparación")
+              clase = "paso-preparacion";
+            if (index === estadoActual && paso.nombre !== "En preparación")
+              clase = "paso-actual";
+
+            return (
+              <div key={index} className={`paso ${clase}`}>
+                <span className="dot"></span>
+                <span className="paso-icon">{paso.icono}</span>
+                <span className="paso-texto">{paso.nombre}</span>
+              </div>
+            );
+          })}
         </div>
       )}
     </div>
