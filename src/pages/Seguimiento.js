@@ -11,7 +11,7 @@ function Seguimiento() {
     { nombre: "Pedido recibido", icono: <FaClipboardList /> },
     { nombre: "En preparación", icono: <FaBoxOpen /> },
     { nombre: "En camino", icono: <GiScooter /> },
-    { nombre: "Entregado", icono: <FaCheckCircle /> },
+    { nombre: "Lavado completado", icono: <FaCheckCircle /> },
   ];
 
   const buscarPedido = () => {
