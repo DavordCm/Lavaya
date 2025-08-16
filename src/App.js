@@ -1,23 +1,70 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { FaTools, FaCar, FaUsers, FaWhatsapp } from "react-icons/fa";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+      {/* Navbar */}
+      <nav className="navbar">
+        <div className="navbar-logo">
+          <img
+            src="/Lavaya.jpg"
+            alt="Logo"
+            className="logo"
+          />
+        </div>
+        <ul className="navbar-links">
+          <li>Inicio</li>
+          <li>Servicios</li>
+          <li>Solicitar</li>
+        </ul>
+      </nav>
+
+      {/* Hero */}
+      <header className="hero">
+        <h1>Bienvenido a LavaYa</h1>
+        <p>Tu servicio express de confianza, Ofrecemos los mejores servicios para ti,<br />
+          rápida y segura
         </p>
+      </header>
+
+      {/* Cards */}
+      <section className="cards">
+        <div className="card">
+          <FaTools className="card-icon" />
+          <h3>Mantenimiento</h3>
+          <p>Brindamos el mejor mantenimiento preventivo y correctivo.</p>
+        </div>
+        <div className="card">
+          <FaCar className="card-icon" />
+          <h3>Transporte</h3>
+          <p>Servicio de transporte seguro y confiable a cualquier destino.</p>
+        </div>
+        <div className="card">
+          <FaUsers className="card-icon" />
+          <h3>Atención al Cliente</h3>
+          <p>Asistencia personalizada para resolver tus necesidades.</p>
+        </div>
+      </section>
+
+      {/* Botón solicitar */}
+      <div className="solicitar-container">
+        <button className="solicitar-btn">Solicitar Ahora</button>
+      </div>
+
+      {/* Contactos */}
+      <footer className="footer">
+        <p>© 2025 Nuestra Empresa</p>
         <a
-          className="App-link"
-          href="https://reactjs.org"
+          href="https://wa.me/51999999999"
           target="_blank"
           rel="noopener noreferrer"
+          className="whatsapp-icon"
         >
-          Learn React
+          <FaWhatsapp />
         </a>
-      </header>
+      </footer>
     </div>
   );
 }
