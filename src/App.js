@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { FaTools, FaMotorcycle, FaUsers, FaWhatsapp } from "react-icons/fa";
+import { FaMapMarkedAlt, FaMotorcycle, FaUsers, FaWhatsapp } from "react-icons/fa";
 
 function App() {
   return (
@@ -32,10 +32,10 @@ function App() {
       {/* Cards */}
       <section className="cards">
         <div className="card">
-          <FaTools className="card-icon" />
-          <h3>Mantenimiento</h3>
-          <p>Brindamos el mejor mantenimiento preventivo y correctivo.</p>
-        </div>
+      <FaMapMarkedAlt className="card-icon" /> 
+        <h3>Seguimiento</h3>
+        <p>Sigue el estado de tu pedido en tiempo real, fácil y rápido.</p>
+      </div>
         <div className="card">
       <FaMotorcycle className="card-icon" />
           <h3>Delivery</h3>
