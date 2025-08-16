@@ -8,7 +8,6 @@ function Solicitar() {
   const [dni, setDni] = useState("");
   const [paso, setPaso] = useState(1);
 
-  // Cantidad de prendas
   const [camisas, setCamisas] = useState(0);
   const [pantalones, setPantalones] = useState(0);
   const [vestidos, setVestidos] = useState(0);
@@ -17,7 +16,7 @@ function Solicitar() {
   const navigate = useNavigate();
 
   const pesos = { camisa: 0.3, pantalon: 0.5, vestido: 0.6 };
-  const precioPorKilo = 12; // Precio S/ por kilo
+  const precioPorKilo = 12;
 
   const obtenerUbicacion = () => {
     if (navigator.geolocation) {
