@@ -13,6 +13,10 @@ function Solicitar() {
   const [vestidos, setVestidos] = useState(0);
 
   const [resultado, setResultado] = useState(null);
+
+  const [metodoPrincipal, setMetodoPrincipal] = useState(null); // Tarjeta o Efectivo
+  const [subMetodo, setSubMetodo] = useState(null); // BCP, Interbank, Yape, Plin
+
   const navigate = useNavigate();
 
   const pesos = { camisa: 0.3, pantalon: 0.5, vestido: 0.6 };
@@ -50,12 +54,15 @@ function Solicitar() {
       vestidos * pesos.vestido;
 
     const totalPrecio = totalKilos * precioPorKilo;
-
     setResultado({ totalKilos, totalPrecio });
   };
 
-  const continuar = () => {
+  const irMetodoPago = () => {
     if (!resultado) return;
+    setPaso(3); // Paso 3: selección de método de pago
+  };
+
+  const finalizarPago = (metodo) => {
     navigate("/confirmacion", {
       state: {
         ubicacion,
@@ -65,13 +72,16 @@ function Solicitar() {
         pantalones,
         vestidos,
         totalKilos: resultado.totalKilos,
-        totalPrecio: resultado.totalPrecio
+        totalPrecio: resultado.totalPrecio,
+        metodoPago: metodo
       }
     });
   };
 
   return (
     <div className="solicitar-container">
+
+      {/* Paso 1: Datos del cliente */}
       {paso === 1 && (
         <>
           <h1>Solicitar Servicio</h1>
@@ -116,6 +126,7 @@ function Solicitar() {
         </>
       )}
 
+      {/* Paso 2: Cantidad de prendas */}
       {paso === 2 && (
         <>
           <h1>Ingresa la cantidad de prendas</h1>
@@ -155,11 +166,69 @@ function Solicitar() {
                 <h2>Resultado</h2>
                 <p>Total estimado de kilos: {resultado.totalKilos.toFixed(2)} kg</p>
                 <p>Precio total: S/ {resultado.totalPrecio.toFixed(2)}</p>
-                <button className="btn-submit" onClick={continuar}>Siguiente</button>
+                <button className="btn-submit" onClick={irMetodoPago}>Siguiente</button>
               </div>
             )}
           </div>
         </>
+      )}
+
+      {/* Paso 3: Selección de método de pago */}
+      {paso === 3 && (
+        <div className="metodo-pago-container">
+          <h1>Selecciona tu método de pago</h1>
+
+          {/* Selección principal: Tarjeta o Efectivo */}
+          {!metodoPrincipal && (
+            <>
+              <button className="btn-submit" onClick={() => setMetodoPrincipal("Tarjeta")}>
+                Tarjeta
+              </button>
+              <button className="btn-submit" onClick={() => setMetodoPrincipal("Efectivo")}>
+                Efectivo
+              </button>
+            </>
+          )}
+
+          {/* Opciones tarjeta */}
+          {metodoPrincipal === "Tarjeta" && !subMetodo && (
+            <>
+              <h2>Elige el banco</h2>
+              <button className="btn-submit" onClick={() => setSubMetodo("BCP")}>BCP</button>
+              <button className="btn-submit" onClick={() => setSubMetodo("Interbank")}>Interbank</button>
+            </>
+          )}
+
+          {/* Formulario tarjeta */}
+          {metodoPrincipal === "Tarjeta" && subMetodo && (
+            <div className="pago-tarjeta">
+              <h2>Datos de {subMetodo}</h2>
+              <input type="text" placeholder="Número de tarjeta" />
+              <input type="text" placeholder="Titular" />
+              <input type="text" placeholder="CVV" />
+              <input type="text" placeholder="Fecha de vencimiento" />
+              <button className="btn-submit" onClick={() => finalizarPago(subMetodo)}>Pagar</button>
+            </div>
+          )}
+
+          {/* Opciones efectivo */}
+          {metodoPrincipal === "Efectivo" && !subMetodo && (
+            <>
+              <h2>Elige el tipo de pago</h2>
+              <button className="btn-submit" onClick={() => setSubMetodo("Yape")}>Yape</button>
+              <button className="btn-submit" onClick={() => setSubMetodo("Plin")}>Plin</button>
+            </>
+          )}
+
+          {/* Mostrar QR */}
+          {metodoPrincipal === "Efectivo" && subMetodo && (
+            <div className="pago-qr">
+              <h2>Escanea este QR con {subMetodo}</h2>
+              <img src={`/qr-${subMetodo.toLowerCase()}.png`} alt={`QR ${subMetodo}`} />
+              <button className="btn-submit" onClick={() => finalizarPago(subMetodo)}>Confirmar Pago</button>
+            </div>
+          )}
+        </div>
       )}
     </div>
   );

@@ -1,3 +1,5 @@
+/* App.css */
+
 /* General */
 body {
   margin: 0;
@@ -10,8 +12,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: white;  /* Fondo blanco */
-  color: #004080;     /* Texto azul */
+  background: white;
+  color: #004080;
   padding: 10px 20px;
 }
 
@@ -28,18 +30,18 @@ body {
 .navbar-links li {
   cursor: pointer;
   font-weight: bold;
-  color: #004080;  /* Texto azul */
+  color: #004080;
   padding: 6px 12px;
   border-radius: 6px;
   transition: 0.3s;
 }
 
 .navbar-links li:hover {
-  background: #cce6ff;  /* Azul celeste */
+  background: #cce6ff;
 }
 
 .navbar-links li:active {
-  background: #66b3ff;  /* Azul más fuerte al hacer clic */
+  background: #66b3ff;
   color: white;
 }
 
@@ -90,18 +92,25 @@ body {
 }
 
 .solicitar-btn {
+  display: inline-block;
   background: #3a8be7;
   color: white;
   border: none;
+  outline: none;
   padding: 12px 25px;
   border-radius: 25px;
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
+  text-decoration: none;
 }
 
 .solicitar-btn:hover {
   background: #508fe0;
+}
+
+.solicitar-container a {
+  text-decoration: none;
 }
 
 /* Footer */
@@ -110,18 +119,41 @@ body {
   color: white;
   padding: 15px;
   text-align: center;
-  position: relative;
 }
 
-.whatsapp-icon {
+/* Nuevas secciones */
+.como-funciona, .tiempos-entrega, .horarios-atencion, .precios-lavanderia {
+  background: #ffffff;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  max-width: 900px;
+}
+
+.como-funciona h2, .tiempos-entrega h2, .horarios-atencion h2, .precios-lavanderia h2 {
+  color: #003366;
+  margin-bottom: 15px;
+}
+
+.como-funciona p, .tiempos-entrega p, .horarios-atencion p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Icono WhatsApp flotante debajo del bot */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 25px;
   font-size: 35px;
   color: #25d366;
-  margin-top: 10px;
-  display: inline-block;
+  cursor: pointer;
   transition: transform 0.3s;
+  z-index: 1000;
 }
 
-.whatsapp-icon:hover {
+.whatsapp-float:hover {
   transform: scale(1.2);
 }
-
