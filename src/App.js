@@ -71,17 +71,35 @@ function App() {
                   </Link>
                 </div>
 
-                {/* Secciones informativas */}
+                {/* Sección informativa de la página */}
+                <section className="sobre-pagina">
+                  <h2>Sobre LavaYa</h2>
+                  <p>
+                    En LavaYa nos especializamos en ofrecer servicios de lavandería rápida, segura y confiable.
+                    Recogemos tu ropa en tu domicilio, la lavamos, y te la entregamos limpia y lista para usar.
+                  </p>
+                  <p>
+                    Nuestra meta es brindar comodidad y confianza a nuestros clientes, asegurando un servicio de calidad
+                    que se adapte a tus necesidades. Trabajamos con lavanderías certificadas y métodos de pago seguros.
+                  </p>
+                  <p>
+                    Valores que nos guían: rapidez, confianza, seguridad y excelente atención al cliente.
+                  </p>
+                </section>
+
+                {/* Cómo funciona */}
                 <section className="como-funciona">
                   <h2>Cómo Funciona</h2>
                   <p>Selecciona tus prendas, indica la cantidad, y nosotros las recogemos y entregamos limpias en tu domicilio.</p>
                 </section>
 
+                {/* Tiempos de entrega */}
                 <section className="tiempos-entrega">
                   <h2>🚚 Tiempos de Entrega</h2>
                   <p>Recogemos tu ropa en el mismo día o al siguiente dependiendo de tu ubicación. La entrega también es rápida y segura.</p>
                 </section>
 
+                {/* Horarios de atención */}
                 <section className="horarios-atencion">
                   <h2>⏰ Horarios de Atención</h2>
                   <p>Lunes a sábado: 08:00 - 20:00<br />Domingos: 09:00 - 14:00</p>
@@ -122,7 +140,7 @@ function App() {
           <FaRobot />
         </div>
 
-        {/* WhatsApp flotante debajo del bot */}
+        {/* WhatsApp flotante */}
         <a
           href="https://wa.me/51923515757"
           target="_blank"

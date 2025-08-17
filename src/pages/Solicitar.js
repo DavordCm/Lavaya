@@ -17,6 +17,7 @@ function Solicitar() {
 
   const [metodoPrincipal, setMetodoPrincipal] = useState(null); // Tarjeta o Efectivo
   const [subMetodo, setSubMetodo] = useState(null); // BCP, Interbank, Yape, Plin
+  const [correoYape, setCorreoYape] = useState(""); // Para Yape
 
   const navigate = useNavigate();
 
@@ -63,7 +64,10 @@ function Solicitar() {
     setPaso(3); // Paso 3: selección de método de pago
   };
 
-  const finalizarPago = (metodo) => {
+  const finalizarPago = (info) => {
+    let metodoFinal = info;
+    if (typeof info === "string") metodoFinal = { metodo: info, correo: null };
+
     navigate("/confirmacion", {
       state: {
         ubicacion,
@@ -74,7 +78,7 @@ function Solicitar() {
         vestidos,
         totalKilos: resultado.totalKilos,
         totalPrecio: resultado.totalPrecio,
-        metodoPago: metodo
+        metodoPago: metodoFinal
       }
     });
   };
@@ -241,11 +245,38 @@ function Solicitar() {
             </>
           )}
 
-          {/* Mostrar QR */}
-          {metodoPrincipal === "Efectivo" && subMetodo && (
+          {/* Mostrar QR y correo para Yape */}
+          {metodoPrincipal === "Efectivo" && subMetodo === "Yape" && (
+            <div className="pago-qr-correo" style={{ display: "flex", gap: "20px", alignItems: "center", flexWrap: "wrap" }}>
+              <div>
+                <h2>Escanea este QR con Yape</h2>
+                <img src="/qryape.jpg" alt="QR Yape" style={{ width: "200px", height: "200px", borderRadius: "10px" }} />
+              </div>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <label>Correo asociado a Yape</label>
+                <input
+                  type="email"
+                  placeholder="Ej: usuario@yape.com"
+                  style={{ padding: "10px", borderRadius: "8px", border: "1px solid #ccc", width: "250px" }}
+                  value={correoYape}
+                  onChange={(e) => setCorreoYape(e.target.value)}
+                />
+                <button
+                  className="btn-submit"
+                  style={{ marginTop: "10px" }}
+                  onClick={() => finalizarPago({ metodo: subMetodo, correo: correoYape })}
+                >
+                  Confirmar Pago
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Mostrar QR para Plin */}
+          {metodoPrincipal === "Efectivo" && subMetodo === "Plin" && (
             <div className="pago-qr">
-              <h2>Escanea este QR con {subMetodo}</h2>
-              <img src={`/${subMetodo.toLowerCase()}.png`} alt={`QR ${subMetodo}`} />
+              <h2>Escanea este QR con Plin</h2>
+              <img src="/plin.png" alt="QR Plin" />
               <button className="btn-submit" onClick={() => finalizarPago(subMetodo)}>Confirmar Pago</button>
             </div>
           )}
