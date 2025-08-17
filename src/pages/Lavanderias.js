@@ -4,32 +4,32 @@ import "../styles/Lavanderias.css";
 
 const lavanderias = [
   {
-    nombre: "LavaYa Express",
-    direccion: "Av. La Libertad 100, Chiclayo",
+    nombre: "LavaClean",
+    direccion: "Av. Javier Prado 245, San Borja, Lima",
     precio: "S/ 12 por kilo",
     pagos: ["BCP", "Yape", "Plin"],
-    img: "/express.png",
+    img: "/lavaclean.png",
   },
   {
-    nombre: "LavaYa Premium",
-    direccion: "Calle Los Olivos 456, Chiclayo",
+    nombre: "LavaDrop",
+    direccion: "Calle Berlín 102, Miraflores, Lima",
     precio: "S/ 15 por kilo",
     pagos: ["BCP", "Yape", "Interbank"],
-    img: "/premiun.png",
+    img: "/lavadrop.png",
   },
   {
-    nombre: "LavaYa Eco",
-    direccion: "Jr. Las Palmas 789, Chiclayo",
+    nombre: "LavaFresh",
+    direccion: "Jr. Los Pinos 88, Surco, Lima",
     precio: "S/ 10 por kilo",
     pagos: ["Yape", "Plin"],
-    img: "/eco.png",
+    img: "/lavafresh.png",
   },
   {
-    nombre: "LavaYa Rápido",
-    direccion: "Av. Comercio 101, Chiclayo",
+    nombre: "LavaMatic",
+    direccion: "Av. Angamos 310, San Isidro, Lima",
     precio: "S/ 11 por kilo",
     pagos: ["BCP", "Interbank", "Plin"],
-    img: "/fast.png",
+    img: "/lavamatic.png",
   },
 ];
 

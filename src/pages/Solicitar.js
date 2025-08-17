@@ -1,3 +1,4 @@
+// Solicitar.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Solicitar.css";
@@ -178,6 +179,18 @@ function Solicitar() {
         <div className="metodo-pago-container">
           <h1>Selecciona tu método de pago</h1>
 
+          {/* Botón de retroceder */}
+          <button
+            className="btn-submit"
+            style={{ background: "#555", marginBottom: "15px" }}
+            onClick={() => {
+              setMetodoPrincipal(null);
+              setSubMetodo(null);
+            }}
+          >
+            ← Volver a seleccionar tipo de pago
+          </button>
+
           {/* Selección principal: Tarjeta o Efectivo */}
           {!metodoPrincipal && (
             <>
@@ -194,8 +207,12 @@ function Solicitar() {
           {metodoPrincipal === "Tarjeta" && !subMetodo && (
             <>
               <h2>Elige el banco</h2>
-              <button className="btn-submit" onClick={() => setSubMetodo("BCP")}>BCP</button>
-              <button className="btn-submit" onClick={() => setSubMetodo("Interbank")}>Interbank</button>
+              <button className="btn-submit" onClick={() => setSubMetodo("BCP")}>
+                <img src="/bcp.png" alt="BCP" className="metodo-img" /> BCP
+              </button>
+              <button className="btn-submit" onClick={() => setSubMetodo("Interbank")}>
+                <img src="/inter.png" alt="Interbank" className="metodo-img" /> Interbank
+              </button>
             </>
           )}
 
@@ -215,8 +232,12 @@ function Solicitar() {
           {metodoPrincipal === "Efectivo" && !subMetodo && (
             <>
               <h2>Elige el tipo de pago</h2>
-              <button className="btn-submit" onClick={() => setSubMetodo("Yape")}>Yape</button>
-              <button className="btn-submit" onClick={() => setSubMetodo("Plin")}>Plin</button>
+              <button className="btn-submit" onClick={() => setSubMetodo("Yape")}>
+                <img src="/yape.png" alt="Yape" className="metodo-img" /> Yape
+              </button>
+              <button className="btn-submit" onClick={() => setSubMetodo("Plin")}>
+                <img src="/plim.png" alt="Plin" className="metodo-img" /> Plin
+              </button>
             </>
           )}
 
@@ -224,7 +245,7 @@ function Solicitar() {
           {metodoPrincipal === "Efectivo" && subMetodo && (
             <div className="pago-qr">
               <h2>Escanea este QR con {subMetodo}</h2>
-              <img src={`/qr-${subMetodo.toLowerCase()}.png`} alt={`QR ${subMetodo}`} />
+              <img src={`/${subMetodo.toLowerCase()}.png`} alt={`QR ${subMetodo}`} />
               <button className="btn-submit" onClick={() => finalizarPago(subMetodo)}>Confirmar Pago</button>
             </div>
           )}

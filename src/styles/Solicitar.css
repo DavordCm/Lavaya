@@ -121,3 +121,47 @@ input[type="number"] {
     width: 100%;
   }
 }
+
+/* Imágenes dentro de botones de métodos de pago */
+.metodo-img {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Botones de métodos de pago con imagen alineados correctamente */
+.btn-metodo {
+  display: flex;
+  align-items: center; /* Alinea verticalmente la imagen con el texto */
+  justify-content: flex-start; /* Texto a la izquierda de la imagen */
+  gap: 10px; /* Espacio entre imagen y texto */
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #f0f0f0;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.btn-metodo:hover {
+  background: #e0e0e0;
+  transform: translateY(-1px);
+}
+
+.btn-metodo img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+/* QR */
+.pago-qr img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  margin: 15px 0;
+}
