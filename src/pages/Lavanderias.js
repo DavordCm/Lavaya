@@ -15,7 +15,7 @@ const lavanderias = [
     nombre: "LavaDrop",
     direccion: "Calle Berlín 102, Miraflores, Lima",
     precio: "S/ 15 por kilo",
-    rangoKilos: "4 - 8 kg",
+    rangoKilos: "4 - 15 kg",
     pagos: ["BCP", "Yape", "Interbank"],
     img: "/lavadrop.png",
   },
