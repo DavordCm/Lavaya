@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
-import { FaMapMarkedAlt, FaMotorcycle, FaUsers, FaWhatsapp, FaRobot, FaTshirt, FaClock, FaShieldAlt, FaTruck, FaBars, FaTimes, FaStar, FaCheckCircle, FaArrowRight } from "react-icons/fa";
+import { FaMapMarkedAlt, FaMotorcycle, FaUsers, FaWhatsapp, FaRobot, FaClock, FaTruck, FaBars, FaTimes, FaStar, FaCheckCircle, FaArrowRight } from "react-icons/fa";
 import Chatbot from "./components/chatbot";
 import Servicios from "./pages/Servicios";
 import Solicitar from "./pages/Solicitar";
